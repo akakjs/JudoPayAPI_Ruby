@@ -1,10 +1,7 @@
 require 'json'
 require 'rest-client'
-require '../lib/judo_pay_api'
 
 class JudoApiClient
-  VERSION = '2.0.0.0'
-
   def initialize(api_token, api_secret, api_environment)
     @api_token = api_token
     @api_secret = api_secret
@@ -12,14 +9,14 @@ class JudoApiClient
   end
 
   def get_transactions
-    resource = "#{@api_environment}/transactions"
+    resource = "https://" + @api_token + ":" + @api_secret + "@" + @api_environment + '/transactions'
 
     response = RestClient.get resource, {
-      :Api-Version => VERSION,
+      :'Api-Version' => '2.0.0.0',
       :accept => 'application/json'
     }
 
-    response.code
+    puts response
   end
 end
 

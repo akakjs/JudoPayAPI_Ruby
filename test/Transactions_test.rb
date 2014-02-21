@@ -1,4 +1,5 @@
-require 'helper'
+require_relative 'helper'
+require_relative '../lib/judo_pay_api'
 
 class ListTransactions < Test::Unit::TestCase
 
@@ -17,7 +18,7 @@ class ListTransactions < Test::Unit::TestCase
 
   # Fake test
   def test_fail
-    client = JudoApiClient.new('123', '543', JudoEnvironment::SANDBOX)
+    client = JudoApiClient.new('RZd9e8qXQk9Fd1PL', 'b5992e1853076ca2b4d4c3e01fdeacd6b5703a47c4bb3009176e8ba597fffbb3', JudoEnvironment::SANDBOX)
 
     client.get_transactions
 
